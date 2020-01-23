@@ -85,6 +85,15 @@ const data = [
     thirdParagraph: `Hodor hodor - hodor... Hodor hodor hodor hodor. Hodor. Hodor! Hodor hodor, hodor hodor hodor hodor hodor; hodor hodor? Hodor!
           Hodor hodor, HODOR hodor, hodor hodor?! Hodor! Hodor hodor, HODOR hodor, hodor hodor, hodor, hodor hodor. Hodor, hodor.
           Hodor. Hodor, hodor, hodor. Hodor hodor... Hodor hodor hodor?! Hodor, hodor... Hodor hodor HODOR hodor, hodor hodor. Hodor.`
+  },
+  {
+    title: 'test article',
+    date: 'Jan 1st, 2019',
+    firstParagraph: `asdkjhajgfhbjaksdbnskJLGBFJHKABGFKJLABFKJLALBFALKBFALKJkdfjgjkjsgjkasbngjksabgjkbglka`,
+
+    secondParagraph: `fdhjewbjifdjbliafjdgfwjagjffdkjlnhohgahgupaeuibnanb;rangiajhngdanbiuearhgoanhioahrgiohaonao`,
+
+    thirdParagraph: `ghfjbkagbadbjfalbdfksbfuiablfbasb`
   }
 ];
 
@@ -130,14 +139,17 @@ const articleMaker = function(articleObject) {
   para3.textContent = articleObject.thirdParagraph;
   let buttonSpan = document.createElement('span');
   buttonSpan.classList.add('expandButton');
+  buttonSpan.textContent = 'EXPAND';
   buttonSpan.addEventListener('click', () => {
     if(open === 0) {
       articleDiv.classList.add('article-open')
       open = 1;
+      buttonSpan.textContent = "HIDE";
     }
     else {
       articleDiv.classList.remove('article-open')
       open = 0;
+      buttonSpan.textContent = 'EXPAND';
     }
   })
   articleDiv.appendChild(titleH2);
