@@ -85,6 +85,15 @@ const data = [
     thirdParagraph: `Hodor hodor - hodor... Hodor hodor hodor hodor. Hodor. Hodor! Hodor hodor, hodor hodor hodor hodor hodor; hodor hodor? Hodor!
           Hodor hodor, HODOR hodor, hodor hodor?! Hodor! Hodor hodor, HODOR hodor, hodor hodor, hodor, hodor hodor. Hodor, hodor.
           Hodor. Hodor, hodor, hodor. Hodor hodor... Hodor hodor hodor?! Hodor, hodor... Hodor hodor HODOR hodor, hodor hodor. Hodor.`
+  },
+  {
+    title: 'test article',
+    date: 'Jan 1st, 2019',
+    firstParagraph: `asdkjhajgfhbjaksdbnskJLGBFJHKABGFKJLABFKJLALBFALKBFALKJkdfjgjkjsgjkasbngjksabgjkbglka`,
+
+    secondParagraph: `fdhjewbjifdjbliafjdgfwjagjffdkjlnhohgahgupaeuibnanb;rangiajhngdanbiuearhgoanhioahrgiohaonao`,
+
+    thirdParagraph: `ghfjbkagbadbjfalbdfksbfuiablfbasb`
   }
 ];
 
@@ -112,3 +121,48 @@ const data = [
   Step 5: Add a new article to the array. Make sure it is in the same format as the others. Refresh the page to see the new article.
 
 */
+
+const articleMaker = function(articleObject) {
+  let open = 0;
+  let articleDiv = document.createElement('div');
+  articleDiv.classList.add('article');
+  let titleH2 = document.createElement('h2');
+  titleH2.textContent = articleObject.title;
+  let dateP = document.createElement('p');
+  dateP.classList.add('date');
+  dateP.textContent = articleObject.date;
+  let para1 = document.createElement('p');
+  para1.textContent = articleObject.firstParagraph;
+  let para2 = document.createElement('p');
+  para2.textContent = articleObject.secondParagraph;
+  let para3 = document.createElement('p');
+  para3.textContent = articleObject.thirdParagraph;
+  let buttonSpan = document.createElement('span');
+  buttonSpan.classList.add('expandButton');
+  buttonSpan.textContent = 'EXPAND';
+  buttonSpan.addEventListener('click', () => {
+    if(open === 0) {
+      articleDiv.classList.add('article-open')
+      open = 1;
+      buttonSpan.textContent = "HIDE";
+    }
+    else {
+      articleDiv.classList.remove('article-open')
+      open = 0;
+      buttonSpan.textContent = 'EXPAND';
+    }
+  })
+  articleDiv.appendChild(titleH2);
+  articleDiv.appendChild(dateP);
+  articleDiv.appendChild(para1);
+  articleDiv.appendChild(para2);
+  articleDiv.appendChild(para3);
+  articleDiv.appendChild(buttonSpan);
+  return articleDiv
+}
+
+let articlesDiv = document.querySelector('.articles')
+for(let i = 0; i < data.length; i++) {
+  articlesDiv.appendChild(articleMaker(data[i]))
+}
+
