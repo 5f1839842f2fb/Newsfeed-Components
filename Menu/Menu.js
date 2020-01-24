@@ -45,6 +45,7 @@ menuMaker = (menuArray) => {
     li.textContent = element;
     ul.appendChild(li)
   })
+  let header = document.querySelector('.header')
   let menuButton = document.querySelector('.menu-button')
   menuButton.addEventListener('click', () => {
     /* if (!open) {
@@ -57,7 +58,7 @@ menuMaker = (menuArray) => {
     } */
     menuDiv.classList.toggle('menu--open')
   })
-  menuButton.appendChild(menuDiv)
+  header.appendChild(menuDiv)
   return menuDiv
 }
 
