@@ -47,16 +47,18 @@ menuMaker = (menuArray) => {
   })
   let menuButton = document.querySelector('.menu-button')
   menuButton.addEventListener('click', () => {
-    if (!open) {
+    /* if (!open) {
       menuDiv.classList.add('menu--open')
       open = true;
     }
     else {
       menuDiv.classList.remove('menu--open')
       open = false;
-    }
+    } */
+    menuDiv.classList.toggle('menu--open')
   })
   menuButton.appendChild(menuDiv)
+  return menuDiv
 }
 
 
